@@ -1,0 +1,61 @@
+# Book orgainising bot - Bob v2.0
+#
+# Bot ma:
+# 1. Dodać książkę.
+# 2. Dodać ocenę (od 1 do 10).
+# 3. Oznaczyć jako przeczytaną.
+# 4. Wypisac posiadane książki.
+# 5. Filtrować.
+# 6. Zapamiętac wprowadzone dane.
+
+class Book:
+    def _init_(self, title, authors, rating, read): #init funkcja inicjalizująca obiekt, self odnosnik do tworzonego obiektu
+     self.title = title
+     self.authors = authors
+     self.rating = rating
+     self.read = read,
+
+b = Book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
+print(b.title)
+print(b.author)
+print(b.rating)
+print(b.read)
+
+
+shelve = []
+
+def add_book(title, authors, rating, read):
+    b = Book(title, authors, rating, read)
+    shelve.append(b)   #dodaje do półłki-listy append, dodanie na sam koniec listy
+
+def print_book(book):
+    print("{:30} | {:30} | {:5} | {:5}".format(book.title, book.authors, book.rating, book.read))
+    print(book.title, " : ", book.authors, " : ", book.rating, " : " book.read)
+    print("Tytuł:", book.title)
+    print("Autor:", book.authors)
+    print("Ocena:", book.rating)
+    print("Przeczytana?:", book.read)
+
+add_book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
+add_book("Zbrodnia i kara", "Fiodor Dostojewski", 8, True)
+add_book("Wywieranie wpływu", "Robert Cialdini", 9, True)
+add_book("Władca pierścieni", "J.R.Tolkien", 9, False)
+
+for book in shelve:
+    print_book(book)
+
+def add_book_from_input():
+    title = input("Tytuł: ")
+    author = input("Autor: ")
+    rating = float("Ocena: ")
+    read = input("Przeczytana?: ")
+    if read == "Tak"
+        read = True
+    else:
+        read = False
+
+    add_book(title, authors, rating, read)
+
+ # add_book_from_input()
+
+print(shelve)
