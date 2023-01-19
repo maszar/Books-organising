@@ -1,3 +1,3 @@
 # Books-organising
 
-This is my Python exercieses
+This is my Python exercises.
