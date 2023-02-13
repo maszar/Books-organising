@@ -28,9 +28,9 @@ def add_book(title, authors, rating, read):
     b = Book(title, authors, rating, read)
     shelve.append(b)   #dodaje do półłki-listy append, dodanie na sam koniec listy
 
-def print_book(book):
-    print("{:30} | {:30} | {:5} | {:5}".format(book.title, book.authors, book.rating, book.read))
-    print(book.title, " : ", book.authors, " : ", book.rating, " : " book.read)
+def print_book(index, book):
+    print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
+    print(book.title, " : ", book.authors, " : ", book.rating, " : ", book.read)
     print("Tytuł:", book.title)
     print("Autor:", book.authors)
     print("Ocena:", book.rating)
@@ -58,4 +58,14 @@ def add_book_from_input():
 
  # add_book_from_input()
 
-print(shelve)
+ for index in range:(len(shelve))
+    print_book(index, shelve[index])
+
+index = int(input("Indeks: "))
+book = shelve[index]
+book.rating = float(input("zmiana oceny na: "))
+
+for index in range:(len(shelve))
+    print_book(index, shelve[index])
+
+
