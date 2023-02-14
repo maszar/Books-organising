@@ -12,39 +12,32 @@ class Book:
     def _init_(self, title, authors, rating, read): #init funkcja inicjalizująca obiekt, self odnosnik do tworzonego obiektu
      self.title = title
      self.authors = authors
-     self.rating = rating
-     self.read = read,
+     self.set_rating(rating)
+     self.read = read
 
-b = Book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
-print(b.title)
-print(b.author)
-print(b.rating)
-print(b.read)
+def set_rating(self, value):
+    if value >= 1.0 and value <= 10.0:
+        self.rating = value 
 
+def set_read(self, value):
+    if value == "Tak":
+        self.read = True
+    else:
+        self.read = False
 
-shelve = []
+class BookBot:
+    def_init_(self):
+        self.shelve = []
 
-def add_book(title, authors, rating, read):
-    b = Book(title, authors, rating, read)
-    shelve.append(b)   #dodaje do półłki-listy append, dodanie na sam koniec listy
+def add_book(self, title, authors, rating, read):
+    b = Book(self, title, authors, rating, read)
+    self.shelve.append(b)
 
-def print_book(index, book):
+def print_book(self, index):
+    book = self.shelve[index]
     print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
-    print(book.title, " : ", book.authors, " : ", book.rating, " : ", book.read)
-    print("Tytuł:", book.title)
-    print("Autor:", book.authors)
-    print("Ocena:", book.rating)
-    print("Przeczytana?:", book.read)
 
-add_book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
-add_book("Zbrodnia i kara", "Fiodor Dostojewski", 8, True)
-add_book("Wywieranie wpływu", "Robert Cialdini", 9, True)
-add_book("Władca pierścieni", "J.R.Tolkien", 9, False)
-
-for book in shelve:
-    print_book(book)
-
-def add_book_from_input():
+def add_book_from_input(self):
     title = input("Tytuł: ")
     author = input("Autor: ")
     rating = float("Ocena: ")
@@ -54,18 +47,78 @@ def add_book_from_input():
     else:
         read = False
 
-    add_book(title, authors, rating, read)
+    self.add_book(title, authors, rating, read)
+
+def print_all_books(self):
+    for index in range(len(self.shelve)):
+        self.print_book(index)
+
+def set_book_rating(self, book_index, rating):
+    book = self.shelve[book_index]
+    book.set_rating(rating)
+
+def set_book_read(self,book_index, read):
+    book = self.shelve[book_index]
+    book.set_read(read)
+
+
+# b = Book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
+# print(b.title)
+#print(b.author)
+# print(b.rating)
+# print(b.read)
+
+
+# shelve = []
+
+# def add_book(title, authors, rating, read):
+    b = Book(title, authors, rating, read)
+    shelve.append(b)   #dodaje do półłki-listy append, dodanie na sam koniec listy
+
+# def print_book(index, book):
+  #  print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
+   # print(book.title, " : ", book.authors, " : ", book.rating, " : ", book.read)
+    #print("Tytuł:", book.title)
+    #print("Autor:", book.authors)
+    #print("Ocena:", book.rating)
+    #print("Przeczytana?:", book.read)
+
+bot = BookBot()
+
+
+bot.add_book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
+bot.add_book("Zbrodnia i kara", "Fiodor Dostojewski", 8, True)
+bot.add_book("Wywieranie wpływu", "Robert Cialdini", 9, True)
+bot.add_book("Władca pierścieni", "J.R.Tolkien", 9, False)
+
+bot.print_all_books()
+
+# for book in shelve:
+    #print_book(book)
+
+#def add_book_from_input():
+ #   title = input("Tytuł: ")
+  #  author = input("Autor: ")
+   # rating = float("Ocena: ")
+    #read = input("Przeczytana?: ")
+    #if read == "Tak"
+     #   read = True
+    #else:
+     #   read = False
+
+    #add_book(title, authors, rating, read)
 
  # add_book_from_input()
 
- for index in range:(len(shelve))
-    print_book(index, shelve[index])
+# for index in range(len(shelve)):
+ 
+ #  print_book(index, shelve[index])
+#index = int(input("Indeks: "))
+#book = shelve[index]
+#book.set_rating(float(input("zmiana oceny na: ")))
+#book.set_read(input("Czy przeczytana: "))
 
-index = int(input("Indeks: "))
-book = shelve[index]
-book.rating = float(input("zmiana oceny na: "))
-
-for index in range:(len(shelve))
-    print_book(index, shelve[index])
+#for index in range:(len(shelve)):
+ #   print_book(index, shelve[index])
 
 
