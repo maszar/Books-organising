@@ -27,15 +27,15 @@ def set_read(self, value):
 
 class BookBot:
     def_init_(self):
-        self.shelve = []
+       self.shelve = []
 
+
+#---------Add---------
 def add_book(self, title, authors, rating, read):
     b = Book(self, title, authors, rating, read)
     self.shelve.append(b)
 
-def print_book(self, index):
-    book = self.shelve[index]
-    print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
+
 
 def add_book_from_input(self):
     title = input("Tytuł: ")
@@ -49,10 +49,29 @@ def add_book_from_input(self):
 
     self.add_book(title, authors, rating, read)
 
-def print_all_books(self):
-    for index in range(len(self.shelve)):
+#................PRINT...................    
+
+def print_book(self, index):
+    book = self.shelve[index]
+    print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
+
+ def print_all_books(self):
+   for index in range(len(self.shelve)):
         self.print_book(index)
 
+def print_all_read_books(self):
+    for i in range(len(self.shelve)):
+        book = self.shelve[i]
+        if book.read:
+            self.print_book(i)
+
+def print_all_rting_books(self, min_rating, max_rating):
+    for i in range(len(self.shelve)):
+        book = self.shelve[i]
+        if min_rating <= book.rating <= max_rating:
+            self.print_book(i)
+
+#.......SET............
 def set_book_rating(self, book_index, rating):
     book = self.shelve[book_index]
     book.set_rating(rating)
@@ -61,64 +80,61 @@ def set_book_read(self,book_index, read):
     book = self.shelve[book_index]
     book.set_read(read)
 
+def save_books(self):
+    text_books = []
 
-# b = Book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
-# print(b.title)
-#print(b.author)
-# print(b.rating)
-# print(b.read)
+    for i in range(len(self.shelve)):
+        book = self.shelve[i]
+        text = "{};{};{};{}".format(book.title, book.authors, book.rating, book.read)
+        text_books.append(text)
+
+    with open('books.csv', 'w') as f:
+        for line in text_books:
+            f.write(line + '\n')
+
+   # print(text_books)
 
 
-# shelve = []
+    
+def load_books(self):
+    with open('books.csv', 'r') as f:
+        for line in f:
+           # print(line)
+           book_list = line.split(';')
+           print(book_list)
 
-# def add_book(title, authors, rating, read):
-    b = Book(title, authors, rating, read)
-    shelve.append(b)   #dodaje do półłki-listy append, dodanie na sam koniec listy
+           if book_list[3] == 'True\n':
+               read = True
+           else:
+               read = False
 
-# def print_book(index, book):
-  #  print("{:4} | {:30} | {:30} | {:5} | {:5}".format(index, book.title, book.authors, book.rating, book.read))
-   # print(book.title, " : ", book.authors, " : ", book.rating, " : ", book.read)
-    #print("Tytuł:", book.title)
-    #print("Autor:", book.authors)
-    #print("Ocena:", book.rating)
-    #print("Przeczytana?:", book.read)
+        self.add_book(book_list[0], book_list[1], float(book_list[2]), book_list[3])
+
 
 bot = BookBot()
 
 
-bot.add_book("Pan Tadeusz", "Adam Mickiewicz", 6.5, True)
-bot.add_book("Zbrodnia i kara", "Fiodor Dostojewski", 8, True)
-bot.add_book("Wywieranie wpływu", "Robert Cialdini", 9, True)
-bot.add_book("Władca pierścieni", "J.R.Tolkien", 9, False)
+while True:
+    command = input("Co mam zrobić?")
 
-bot.print_all_books()
-
-# for book in shelve:
-    #print_book(book)
-
-#def add_book_from_input():
- #   title = input("Tytuł: ")
-  #  author = input("Autor: ")
-   # rating = float("Ocena: ")
-    #read = input("Przeczytana?: ")
-    #if read == "Tak"
-     #   read = True
-    #else:
-     #   read = False
-
-    #add_book(title, authors, rating, read)
-
- # add_book_from_input()
-
-# for index in range(len(shelve)):
- 
- #  print_book(index, shelve[index])
-#index = int(input("Indeks: "))
-#book = shelve[index]
-#book.set_rating(float(input("zmiana oceny na: ")))
-#book.set_read(input("Czy przeczytana: "))
-
-#for index in range:(len(shelve)):
- #   print_book(index, shelve[index])
+    if command == "dodaj":
+        bot.add_book_from_input()
+    elif command == "wszystkie":
+        bot.print_all_books()
+    elif command == "oceń":
+        index = int(input("Index: "))
+        rating = float(input("Ocena: "))
+        bot.set_book_rating(index, rating)        
+    elif command == "przeczytałam":
+        index = int(input("Indeks: "))
+        bot.set_books_read(index, True)
+    elif command == "pokaż przeczytane":
+        bot.print_all_read_books()
+    elif command == "pokaz ocenione"
+        min_rating = float('Min ocena: ')
+        max_rating = float('Max ocena: ')
+        bot.print_all_read_books(min_rating, max_rating)
+    else:
+        print("Nie wiem o co chodzi, spróbuj jeszcze raz:")
 
 
