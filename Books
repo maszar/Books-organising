@@ -114,6 +114,7 @@ def load_books(self):
 bot = BookBot()
 
 
+
 while True:
     command = input("Co mam zrobić?")
 
@@ -131,8 +132,8 @@ while True:
     elif command == "pokaż przeczytane":
         bot.print_all_read_books()
     elif command == "pokaz ocenione"
-        min_rating = float('Min ocena: ')
-        max_rating = float('Max ocena: ')
+        min_rating = float(input('Min ocena: '))
+        max_rating = float(input('Max ocena: '))
         bot.print_all_read_books(min_rating, max_rating)
     else:
         print("Nie wiem o co chodzi, spróbuj jeszcze raz:")
